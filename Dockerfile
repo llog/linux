@@ -13,8 +13,9 @@ RUN    pacman-key --init \
       /etc/pacman.d/mirrorlist.pacnew
 
 ## Install packages
+ENV TERM linux
 RUN pacman --noconfirm -Syu \
-  openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils wget zsh\
+  openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils wget zsh git \
   libaio \
   && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
   && rm -f \
