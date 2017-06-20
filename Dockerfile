@@ -1,19 +1,21 @@
-FROM base/devel:latest
+FROM base/archlinux:latest
 
 LABEL maintainer "hello@ifnot.cc"
 
-# RUN    pacman-key --init \
-#     && pacman-key --populate archlinux \
-#     && pacman --noconfirm -Syu --needed base-devel \
-#     && rm -f \
-#       /var/cache/pacman/pkg/* \
-#       /var/lib/pacman/sync/* \
-#       /README \
-#       /etc/pacman.d/mirrorlist.pacnew
+## Install base-devel
+RUN    pacman-key --init \
+    && pacman-key --populate archlinux \
+    && pacman --noconfirm -Syu --needed base-devel \
+    && rm -f \
+      /var/cache/pacman/pkg/* \
+      /var/lib/pacman/sync/* \
+      /README \
+      /etc/pacman.d/mirrorlist.pacnew
 
 ## Install packages
 RUN pacman --noconfirm -Syu \
-  openssh vim cloc nasm gnu-netcat htop tree \
+  openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils \
+  libaio \
   && rm -f \
         /var/cache/pacman/pkg/* \
         /var/lib/pacman/sync/* \
