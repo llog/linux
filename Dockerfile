@@ -14,8 +14,9 @@ RUN    pacman-key --init \
 
 ## Install packages
 RUN pacman --noconfirm -Syu \
-  openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils \
+  openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils wget zsh\
   libaio \
+  && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
   && rm -f \
         /var/cache/pacman/pkg/* \
         /var/lib/pacman/sync/* \
