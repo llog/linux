@@ -22,4 +22,12 @@ RUN pacman --noconfirm -Syu \
         /README \
         /etc/pacman.d/mirrorlist.pacnew
 
-CMD ["/bin/bash"]
+#CMD ["/bin/bash"]
+RUN /usr/bin/ssh-keygen -A \
+ && sed -ri 's/^#PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
+ && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
+ && sed -ri 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config \
+ && echo 'root:root' | chpasswd
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
