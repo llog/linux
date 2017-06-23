@@ -32,5 +32,8 @@ RUN /usr/bin/ssh-keygen -A \
  && sed -ri 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config \
  && echo 'root:root' | chpasswd
 
+VOLUME ["/codes"]
+VOLUME ["/images"]
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
