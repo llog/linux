@@ -5,7 +5,6 @@ LABEL maintainer "hello@ifnot.cc"
 ## Install base-devel
 RUN    pacman-key --init \
     && pacman-key --populate archlinux \
-    && pacman --noconfirm -Syu \
     && pacman --noconfirm -Syu --needed base-devel \
     && rm -f \
       /var/cache/pacman/pkg/* \
