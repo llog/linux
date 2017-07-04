@@ -4,12 +4,15 @@ services:
   - docker
 env:
   - IMAGE="huaixiaoz/linux"
+  - MY="huaixiaoz/linux:my"
 
 script:
   - travis_retry docker build -t "$IMAGE" .
 
 after_script:
   - docker images
+  - cd my && travis_retry docker build --build-arg ROOT_PASSWORD=$ROOT_PASSWORD -t "$MY" .
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push $IMAGE
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push $MY
