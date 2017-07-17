@@ -15,7 +15,7 @@ RUN    pacman-key --init \
 ## Install packages
 ENV TERM linux
 RUN pacman --noconfirm -Syu \
-  openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils wget zsh \
+  openssh vim cloc gnu-netcat htop tree iproute2 net-tools pciutils wget zsh aria2 \
   git cmake ninja python python-pip ruby lua nasm yasm\
   libaio libzip lbzip2 \
   jdk8-openjdk \
