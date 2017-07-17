@@ -16,8 +16,9 @@ RUN    pacman-key --init \
 ENV TERM linux
 RUN pacman --noconfirm -Syu \
   openssh vim cloc nasm gnu-netcat htop tree iproute2 net-tools pciutils wget zsh \
-  git cmake ninja python python-pip ruby \
+  git cmake ninja python python-pip ruby lua nasm yasm\
   libaio libzip lbzip2 \
+  jdk8-openjdk \
   && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
   && rm -f \
         /var/cache/pacman/pkg/* \
