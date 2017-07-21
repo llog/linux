@@ -6,7 +6,7 @@ LABEL maintainer "hello@ifnot.cc"
 RUN    pacman-key --init \
     && pacman-key --populate archlinux \
     && pacman --noconfirm -Syu --needed base-devel \
-    && rm -f \
+    && rm -rf \
       /usr/share/man/* \
       /var/cache/pacman/pkg/* \
       /var/lib/pacman/sync/* \
@@ -21,7 +21,7 @@ RUN pacman --noconfirm -Syu \
   libaio libzip lbzip2 \
   jdk8-openjdk \
   && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
-  && rm -f \
+  && rm -rf \
         /usr/share/man/* \
         /var/cache/pacman/pkg/* \
         /var/lib/pacman/sync/* \

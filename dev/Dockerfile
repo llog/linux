@@ -11,7 +11,7 @@ EOF
 
 RUN pacman --noconfirm -Syu \
   nodejs npm gulp go ruby gcc-multilib \
-  && rm -f \
+  && rm -rf \
         /usr/share/man/* \
         /var/cache/pacman/pkg/* \
         /var/lib/pacman/sync/* \
