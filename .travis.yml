@@ -3,7 +3,7 @@ sudo: required
 services:
   - docker
 env:
-  - IMAGE="huaixiaoz/linux" MY="huaixiaoz/linux:my"
+  - IMAGE="huaixiaoz/linux" MY="huaixiaoz/linux:my" DEV="huaixiaoz/linux:dev"
 
 script:
   - travis_retry docker build -t "$IMAGE" .
@@ -12,7 +12,9 @@ after_script:
   - docker images
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push $IMAGE
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push $MY
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push $DEV
 
 after_success:
   - docker images
   - travis_retry docker build --build-arg ROOT_PASSWORD=$ROOT_PASSWORD -t "$MY" ./my
+  - travis_retry docker build -t "$DEV" ./dev
