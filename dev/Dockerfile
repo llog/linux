@@ -2,15 +2,15 @@ FROM huaixiaoz/linux:my
 
 LABEL maintainer "hello@ifnot.cc"
 
-## enable multilib repo
-RUN cat > /etc/pacman.conf <<EOF
+## enable multilib repo, add multilib support
+# Add multilib repo
+RUN  sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /etc/pacman.conf && \
+    sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /etc/pacman.conf && \
+    sed -i 's/#\[multilib\]/\[multilib\]/g' /etc/pacman.conf
 
-[community]
-Include = /etc/pacman.d/mirrorlist
-EOF
-
-RUN pacman --noconfirm -Syu \
-  nodejs npm gulp go ruby gcc-multilib \
+RUN yes y$'\n'y$'\n' | pacman  -Syu gcc-multilib \
+  && pacman --noconfirm -Syu \
+  nodejs npm gulp go \
   && rm -rf \
         /usr/share/man/* \
         /var/cache/pacman/pkg/* \
