@@ -7,6 +7,7 @@ RUN    pacman-key --init \
     && pacman-key --populate archlinux \
     && pacman --noconfirm -Syu --needed base-devel \
     && rm -f \
+      /usr/share/man/* \
       /var/cache/pacman/pkg/* \
       /var/lib/pacman/sync/* \
       /README \
@@ -21,6 +22,7 @@ RUN pacman --noconfirm -Syu \
   jdk8-openjdk \
   && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
   && rm -f \
+        /usr/share/man/* \
         /var/cache/pacman/pkg/* \
         /var/lib/pacman/sync/* \
         /README \
