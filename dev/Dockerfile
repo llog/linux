@@ -10,7 +10,7 @@ RUN  sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /et
 
 RUN yes y$'\n'y$'\n' | pacman  -Syu gcc-multilib \
   && pacman --noconfirm -Syu \
-  nodejs npm gulp go \
+  nodejs npm gulp go rust \
   && rm -rf \
         /usr/share/man/* \
         /var/cache/pacman/pkg/* \
