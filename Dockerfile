@@ -14,7 +14,7 @@ RUN    pacman-key --init \
       /etc/pacman.d/mirrorlist.pacnew
 
 ## Install packages
-ENV TERM linux
+ENV TERM xterm
 RUN pacman --noconfirm -Syu \
   openssh vim cloc gnu-netcat htop tree iproute2 net-tools pciutils wget zsh aria2 \
   git cmake ninja python python-pip ruby lua nasm yasm\
