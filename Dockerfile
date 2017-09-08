@@ -21,6 +21,7 @@ RUN pacman --noconfirm -Syu \
   libaio libzip lbzip2 \
   jdk8-openjdk \
   && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
+  && mkdir ${HOME}/.config \
   && curl -sLf https://spacevim.org/install.sh | sh \
   && rm -rf \
         /usr/share/man/* \
