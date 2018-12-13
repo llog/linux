@@ -17,6 +17,7 @@ RUN    pacman-key --init \
 ENV TERM xterm
 RUN pacman --noconfirm -Syu \
   openssh vim neovim cloc gnu-netcat htop tree iproute2 net-tools pciutils wget zsh aria2 \
+  ctags gdb \
   git cmake ninja python python-pip ruby lua nasm yasm clang llvm\
   libaio libzip lbzip2 \
   jdk8-openjdk \
